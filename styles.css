@@ -127,7 +127,7 @@ h2 { font: 500 clamp(36px, 4vw, 57px)/1.18 var(--display); letter-spacing: -1px;
 .trust-copy ul { list-style: none; padding: 0; margin: 30px 0 34px; max-width: 440px; position: relative; z-index: 1; align-self: stretch; }
 .trust-copy li { padding: 15px 0 15px 34px; border-top: 1px solid rgba(20,19,17,.2); font-size: 13px; line-height: 1.6; position: relative; }
 .trust-copy li:last-child { border-bottom: 1px solid rgba(20,19,17,.2); }
-.trust-copy li::before { content: '↗'; position: absolute; left: 0; top: 13px; font-size: 18px; }
+.trust-copy li::before { content: '↗\FE0E'; position: absolute; left: 0; top: 13px; font-size: 18px; }
 .trust-star { position: absolute; right: -22px; bottom: -67px; font-size: 240px; color: rgba(20,19,17,.08); line-height: 1; }
 
 /* Statement */
@@ -298,4 +298,30 @@ footer > span, footer > a:last-child { color: var(--muted); font-size: 10px; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- Star icon (SVG, so phones don't turn ✳ into a green emoji) ---------- */
+.star { display: inline-block; flex: none; width: .78em; height: .78em; vertical-align: middle; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9 4.9 19.1'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9 4.9 19.1'/%3E%3C/svg%3E") center / contain no-repeat; }
+.trust-star.star { right: -30px; bottom: -40px; }
+
+/* ---------- Phone fixes ---------- */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+h2 .serif { white-space: nowrap; }
+
+/* Touch screens: no sticky hover shifts after a tap */
+@media (hover: none) {
+  .button:hover { transform: none; }
+  .step:hover { background: transparent; padding-inline: 0; }
+  .step:hover .step-arrow { background: transparent; color: inherit; border-color: #57524a; }
+  .listing-link:hover { padding-inline: 0; }
+  .listing-photo:hover img, .hero-image:hover img, .trust:hover .trust-photo img { transform: none; }
+  .listing-photo:hover .listing-open { transform: none; }
+}
+
+@media (max-width: 760px) {
+  .hero-actions { gap: 12px 18px; }
+  .hero-actions .button { flex: 1 1 auto; gap: 14px; padding-inline: 18px; }
+  .text-link { gap: 10px; }
+  .trust-star.star { font-size: 150px; right: -30px; bottom: -75px; }
+  .contacts h2 { font-size: clamp(30px, 8.2vw, 62px); }
 }

@@ -33,7 +33,7 @@
         <img src="${escape(l.image)}" alt="${escape(l.title)}, ${escape(l.district)}" loading="lazy">
         ${l.tag ? `<span class="listing-tag">${escape(l.tag)}</span>` : ''}
         <span class="listing-index">${String(i + 1).padStart(2, '0')} / ${total}</span>
-        <span class="listing-open" aria-hidden="true">↗</span>
+        <span class="listing-open" aria-hidden="true">↗︎</span>
       </a>
       <div class="listing-info">
         <div>
@@ -43,7 +43,7 @@
         </div>
         <div class="listing-price">${escape(money(l.price))}</div>
       </div>
-      <a class="listing-link" href="${url}" target="_blank" rel="noopener">Смотреть объявление <span>↗</span></a>
+      <a class="listing-link" href="${url}" target="_blank" rel="noopener">Смотреть объявление <span>↗︎</span></a>
     </article>`;
   }).join('');
 
