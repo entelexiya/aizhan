@@ -5,8 +5,8 @@
   --text: #f2eee6;
   --muted: #a39d92;
   --line: #34312b;
-  --accent: #d8b98a;
-  --accent-hover: #ead3ae;
+  --accent: #ff7a2f;
+  --accent-hover: #ff9d5c;
   --display: 'Oswald', 'Arial Narrow', sans-serif;
   --body: 'Manrope', Arial, sans-serif;
   --serif: 'Cormorant Garamond', Georgia, serif;
@@ -49,8 +49,8 @@ nav a:hover, .text-link:hover { color: var(--accent); }
 .hero { display: grid; grid-template-columns: 1.14fr 1fr; padding-top: 48px; column-gap: 24px; }
 .hero-copy { padding-top: 35px; z-index: 1; }
 .eyebrow { display: flex; align-items: center; gap: 9px; font-size: 10px; font-weight: 700; letter-spacing: 1.6px; }
-.status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px rgba(216, 185, 138, .5); animation: pulse 2.4s ease-in-out infinite; }
-@keyframes pulse { 50% { box-shadow: 0 0 0 6px rgba(216, 185, 138, 0); opacity: .6; } }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px rgba(255, 122, 47, .5); animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 50% { box-shadow: 0 0 0 6px rgba(255, 122, 47, 0); opacity: .6; } }
 .hero h1 { font: 600 clamp(58px, 6.8vw, 100px)/1.13 var(--display); letter-spacing: -2.5px; margin: 26px -130px 24px 0; position: relative; z-index: 2; }
 .outlined { color: transparent; -webkit-text-stroke: 1px var(--text); }
 .hero-copy > p { color: #c4beb2; font-size: 15px; line-height: 1.85; }
@@ -176,7 +176,7 @@ details[open] summary span { transform: rotate(45deg); }
 details p { color: var(--muted); font-size: 13px; line-height: 1.9; margin: 0 30px 25px 0; }
 
 /* Contacts */
-.contacts { border-block: 1px solid var(--line); background: radial-gradient(ellipse at 90% 20%, rgba(216,185,138,.1), transparent 60%); }
+.contacts { border-block: 1px solid var(--line); background: radial-gradient(ellipse at 90% 20%, rgba(255, 122, 47,.1), transparent 60%); }
 .contact-inner { padding-block: 80px 70px; }
 .contacts h2 { font-size: clamp(45px, 6vw, 85px); line-height: 1.17; margin-top: 28px; }
 .contact-bottom { display: flex; justify-content: space-between; align-items: center; gap: 30px; margin-top: 50px; flex-wrap: wrap; }
@@ -325,3 +325,7 @@ h2 .serif { white-space: nowrap; }
   .trust-star.star { font-size: 150px; right: -30px; bottom: -75px; }
   .contacts h2 { font-size: clamp(30px, 8.2vw, 62px); }
 }
+.trust-text { max-width: 380px; font-size: 14px; line-height: 1.8; margin: 22px 0 34px; position: relative; z-index: 1; }
+.hero-copy { align-self: center; padding-top: 0; }
+.trust-copy { justify-content: center; }
+@media (max-width: 760px) { .hero-actions { margin-bottom: 30px; } .trust-copy { padding-block: 44px 48px; } }

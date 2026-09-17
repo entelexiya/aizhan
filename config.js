@@ -7,7 +7,7 @@ window.REALTOR = {
   families: '100+',
   city: 'Астана',
   agency: 'Панорама Group',
-  accent: '#d8b98a',
+  accent: '#ff7a2f',
   currency: '₸',
 
   // Контакты: телефон в формате 77001234567 (без +), instagram — логин без @
