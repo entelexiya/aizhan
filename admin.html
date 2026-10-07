@@ -8,6 +8,7 @@
   <title>Объекты — управление</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 8v84M8 50h84M20 20l60 60M80 20 20 80' stroke='%23ff7a2f' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <script src="config.js"></script>
   <style>
     :root { --bg:#141311; --panel:#1c1b18; --line:#34312b; --text:#f2eee6; --muted:#a39d92; --accent:#ff7a2f; }
     * { box-sizing: border-box; }
@@ -46,6 +47,7 @@
     .err { color:#ff8f6b; }
     .top-links { display:flex; gap:16px; font-size:12px; margin-bottom:24px; }
     .top-links a { color:var(--muted); }
+    .add-row { display:flex; gap:12px; flex-wrap:wrap; }
     @media (max-width:640px) {
       .grid { grid-template-columns:1fr; }
       .photo-row { flex-direction:column; }
@@ -73,7 +75,10 @@
         <a href="#" id="logout">Выйти</a>
       </div>
       <div id="cards"></div>
-      <button class="ghost" id="add">+ Добавить объект</button>
+      <div class="add-row">
+        <button class="ghost" id="add">+ Добавить объект</button>
+        <button class="ghost" id="import">Добавить объекты с Krisha из файла</button>
+      </div>
       <div class="bar">
         <button id="save">Сохранить и опубликовать</button>
         <span class="status" id="status"></span>
@@ -194,6 +199,20 @@
     });
 
     $('#add').addEventListener('click', () => { items.push(empty()); render(); window.scrollTo(0, document.body.scrollHeight); });
+
+    // Подставляет объекты из config.js — те девять, что собраны с Krisha
+    $('#import').addEventListener('click', () => {
+      const fromFile = (window.REALTOR && window.REALTOR.listings) || [];
+      if (!fromFile.length) { setStatus('В файле нет объектов', 'err'); return; }
+      const have = new Set(items.map(l => l.url).filter(Boolean));
+      const base = location.origin + '/';
+      const added = fromFile
+        .filter(l => !have.has(l.url))
+        .map(l => ({ ...l, image: /^https?:/.test(l.image) ? l.image : base + l.image }));
+      items = items.filter(l => l.title || l.url || l.image).concat(added);
+      render();
+      setStatus(`Добавлено объектов: ${added.length}. Проверьте и нажмите «Сохранить».`, 'ok');
+    });
 
     $('#cards').addEventListener('input', e => {
       const card = e.target.closest('.card');
