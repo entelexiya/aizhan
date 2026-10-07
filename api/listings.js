@@ -5,6 +5,14 @@ import { put, list } from '@vercel/blob';
 
 const FILE = 'listings.json';
 
+// Обычно токен лежит в BLOB_READ_WRITE_TOKEN, но при другом префиксе стора
+// Vercel называет переменную иначе — находим её по значению.
+export function blobToken() {
+  if (process.env.BLOB_READ_WRITE_TOKEN) return process.env.BLOB_READ_WRITE_TOKEN;
+  const found = Object.entries(process.env).find(([k, v]) => /_READ_WRITE_TOKEN$/.test(k) && /^vercel_blob_rw_/.test(v || ''));
+  return found ? found[1] : undefined;
+}
+
 function passwordOk(req) {
   const expected = process.env.ADMIN_PASSWORD;
   if (!expected) return false;
@@ -21,7 +29,7 @@ export function storageError(e) {
 }
 
 async function currentUrl() {
-  const { blobs } = await list({ prefix: FILE, limit: 1 });
+  const { blobs } = await list({ prefix: FILE, limit: 1, token: blobToken() });
   return blobs.length ? blobs[0].url : null;
 }
 
@@ -61,6 +69,7 @@ export default async function handler(req, res) {
 
     try {
       await put(FILE, JSON.stringify({ listings: clean }, null, 2), {
+        token: blobToken(),
         access: 'public',
         contentType: 'application/json',
         addRandomSuffix: false,

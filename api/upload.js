@@ -1,6 +1,7 @@
 // Загрузка фото объекта. Админка уменьшает снимок в браузере и шлёт его сюда,
 // поэтому в запрос всегда помещается даже фото с телефона.
 import { put } from '@vercel/blob';
+import { blobToken } from './listings.js';
 
 export const config = { api: { bodyParser: { sizeLimit: '6mb' } } };
 
@@ -27,6 +28,7 @@ export default async function handler(req, res) {
 
   try {
     const blob = await put(`photos/${Date.now()}.${TYPES[match[1]]}`, buffer, {
+      token: blobToken(),
       access: 'public',
       contentType: match[1],
       addRandomSuffix: true
