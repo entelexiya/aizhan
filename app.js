@@ -47,6 +47,12 @@
     </article>`;
   }).join('');
 
+  // ---- Reviews ----
+  const reviewList = $('#review-list');
+  if (reviewList) reviewList.innerHTML = (c.reviews || []).map(r =>
+    `<article class="review reveal"><p>«${escape(r.text)}»</p><div class="review-author"><strong>${escape(r.name)}</strong><span>${escape(r.deal)}</span></div></article>`
+  ).join('');
+
   // ---- Photos (striped placeholder if file is missing) ----
   const markMissing = img => img.parentElement.classList.add('no-photo');
   $$('[data-photo]').forEach(img => {
