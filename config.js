@@ -41,34 +41,89 @@ window.REALTOR = {
     }
   ],
 
-  // Объекты в продаже. Фото и ссылка — обязательны. Всё карточка кликабельна.
+  // Объекты в продаже. Данные взяты с объявлений на Krisha, фото лежат в assets/listings.
+  // Порядок важен: первые три объекта показываются на главной, все — в каталоге.
   listings: [
     {
-      title: '3-комнатная квартира',
-      district: 'ЖК «Название», Есильский р-н',
-      rooms: 3, area: 98, floor: '7/12',
-      price: 89000000,
-      tag: 'НОВИНКА',
-      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400&q=80',
-      url: 'https://krisha.kz/'
+      title: '2-комнатная квартира',
+      district: 'Ш. Калдаякова — С. Нурмагамбетова, Алматы р-н',
+      rooms: 2, area: 55, floor: '2/9',
+      price: 31500000,
+      tag: '',
+      image: 'assets/listings/1015779713.jpg',
+      url: 'https://krisha.kz/a/show/1015779713'
     },
     {
       title: '2-комнатная квартира',
-      district: 'ЖК «Название», р-н Нура',
-      rooms: 2, area: 64, floor: '4/9',
-      price: 52500000,
+      district: 'Е 908, Нура р-н',
+      rooms: 2, area: 57, floor: '10/17',
+      price: 32000000,
       tag: '',
-      image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1400&q=80',
-      url: 'https://krisha.kz/'
+      image: 'assets/listings/1013001080.jpg',
+      url: 'https://krisha.kz/a/show/1013001080'
+    },
+    {
+      title: '2-комнатная квартира',
+      district: 'Мухамедханова, Нура р-н',
+      rooms: 2, area: 63, floor: '4/9',
+      price: 32500000,
+      tag: '',
+      image: 'assets/listings/1015502595.jpg',
+      url: 'https://krisha.kz/a/show/1015502595'
     },
     {
       title: '1-комнатная квартира',
-      district: 'ЖК «Название», р-н Сарыарка',
-      rooms: 1, area: 42, floor: '10/16',
-      price: 34900000,
-      tag: 'ВЫГОДНО',
-      image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1400&q=80',
-      url: 'https://krisha.kz/'
+      district: 'А. Байтурсынова, Алматы р-н',
+      rooms: 1, area: 36.4, floor: '4/9',
+      price: 21500000,
+      tag: '',
+      image: 'assets/listings/1015953748.jpg',
+      url: 'https://krisha.kz/a/show/1015953748'
+    },
+    {
+      title: '2-комнатная квартира',
+      district: 'Мәңгілік Ел 42а, Есильский р-н',
+      rooms: 2, area: 75, floor: '4/8',
+      price: 58000000,
+      tag: '',
+      image: 'assets/listings/1015244095.jpg',
+      url: 'https://krisha.kz/a/show/1015244095'
+    },
+    {
+      title: 'Коммерческое помещение',
+      district: 'Е 669 — Улы дала, Есильский р-н',
+      rooms: '', area: 80, floor: '1',
+      price: 37000000,
+      tag: 'ПОД БИЗНЕС',
+      image: 'assets/listings/1015983691.jpg',
+      url: 'https://krisha.kz/a/show/1015983691'
+    },
+    {
+      title: 'Коммерческое помещение',
+      district: 'ЖК Tasty, Байтурсынулы — Нурлы жол, Сарайшык р-н',
+      rooms: '', area: 148, floor: '1',
+      price: 105000000,
+      tag: 'ГОТОВЫЙ БИЗНЕС',
+      image: 'assets/listings/1015983903.jpg',
+      url: 'https://krisha.kz/a/show/1015983903'
+    },
+    {
+      title: 'Дом',
+      district: 'Село Ыбырай Алтынсарин, Богенбай батыра',
+      rooms: 7, area: 177, floor: '',
+      price: 44000000,
+      tag: '',
+      image: 'assets/listings/1015779174.jpg',
+      url: 'https://krisha.kz/a/show/1015779174'
+    },
+    {
+      title: 'Коттедж',
+      district: 'Шаттық, Алматы р-н',
+      rooms: 6, area: 157, floor: '',
+      price: 185000000,
+      tag: 'ГОТОВЫЙ БИЗНЕС',
+      image: 'assets/listings/1015833082.jpg',
+      url: 'https://krisha.kz/a/show/1015833082'
     }
   ]
 };
