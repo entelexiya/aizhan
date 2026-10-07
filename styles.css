@@ -329,3 +329,67 @@ h2 .serif { white-space: nowrap; }
 .hero-copy { align-self: center; padding-top: 0; }
 .trust-copy { justify-content: center; }
 @media (max-width: 760px) { .hero-actions { margin-bottom: 30px; } .trust-copy { padding-block: 44px 48px; } }
+
+/* ================= Новая структура ================= */
+
+/* Первый экран без подписей */
+.hero { align-items: center; padding-bottom: 90px; }
+.hero-image { min-height: 620px; }
+.hero-actions { margin-top: 40px; }
+
+/* Фото + цифры вместо блока «Обо мне» */
+.about { display: block; }
+.about-photo { height: 620px; overflow: hidden; background: var(--panel-2); position: relative; }
+.about-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.45), transparent 42%); pointer-events: none; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; filter: saturate(.85) brightness(.92); transition: transform 1.4s; }
+.about-photo:hover img { transform: scale(1.03); }
+.about .stats { margin-top: 0; border-top: 0; }
+.about .stats > div { padding-top: 34px; }
+
+/* Этапы: карточки 2×3 */
+.step-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #45413a; border: 1px solid #45413a; }
+.step-card { background: var(--panel); padding: 38px 36px 42px; transition: background .25s; }
+.step-card:hover { background: var(--panel-2); }
+.step-card .step-number { display: block; font: 500 34px/1 var(--display); color: var(--accent); margin-bottom: 20px; }
+.step-card h3 { font: 500 24px/1.25 var(--display); letter-spacing: -.3px; margin: 0 0 14px; }
+.step-card p { font-size: 14px; line-height: 1.8; color: #bdb6aa; margin: 0; max-width: 46ch; }
+.process-foot { margin-top: 26px; font-size: 11px; }
+
+/* Оранжевая полоса с кнопкой */
+.cta-band { background: var(--accent); color: var(--bg); }
+.cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding-block: 56px; flex-wrap: wrap; }
+.cta-inner h2 { margin: 0; font-size: clamp(30px, 3.4vw, 48px); }
+.cta-band .serif { color: var(--bg); }
+
+/* Вопросы: крупнее и просторнее */
+.faq { gap: 80px; }
+.faq summary { font-size: 17px; padding: 30px 0; gap: 30px; }
+.faq summary span { font-size: 28px; }
+.faq details p { font-size: 15px; line-height: 1.95; color: #b5aea2; margin: 0 40px 30px 0; }
+
+@media (max-width: 1100px) {
+  .hero-image { min-height: 540px; }
+  .about-photo { height: 540px; }
+  .step-card { padding: 30px 28px 34px; }
+  .step-card h3 { font-size: 21px; }
+}
+
+@media (max-width: 760px) {
+  .hero { padding-bottom: 50px; }
+  .hero-image { min-height: 440px; }
+  .hero-actions { margin-top: 28px; margin-bottom: 0; }
+  .hero-actions .button { width: 100%; }
+  .about-photo { height: 480px; }
+  .about .stats > div { padding: 22px 0; }
+  .step-grid { grid-template-columns: 1fr; }
+  .step-card { padding: 26px 22px 30px; }
+  .step-card .step-number { font-size: 28px; margin-bottom: 14px; }
+  .step-card h3 { font-size: 20px; }
+  .step-card p { font-size: 13px; }
+  .cta-inner { padding-block: 40px; gap: 26px; }
+  .cta-inner h2 { font-size: 34px; }
+  .cta-inner .button { width: 100%; }
+  .faq { gap: 28px; }
+  .faq summary { font-size: 15px; padding: 24px 0; gap: 20px; }
+  .faq details p { font-size: 14px; margin-right: 10px; }
+}
