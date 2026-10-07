@@ -448,3 +448,15 @@ h2 .serif { white-space: nowrap; }
 .hero { padding-bottom: 60px; }
 .about { padding-top: 0; }
 @media (max-width: 760px) { .hero { padding-bottom: 36px; } }
+
+/* Кнопка на каталог и страница каталога */
+.listings-more { display: flex; align-items: center; gap: 28px; margin-top: 44px; flex-wrap: wrap; }
+.listings-more .secondary { font-size: 12px; }
+.catalog-head { padding-block: 60px 40px; }
+.catalog-title { font: 600 clamp(38px, 5vw, 72px)/1.12 var(--display); letter-spacing: -2px; margin: 20px 0 14px; }
+.catalog-head .secondary { font-size: 13px; margin: 0; }
+@media (max-width: 760px) {
+  .listings-more { gap: 16px; margin-top: 32px; }
+  .listings-more .button { width: 100%; }
+  .catalog-head { padding-block: 34px 26px; }
+}
