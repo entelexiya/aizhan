@@ -33,6 +33,9 @@ export default async function handler(req, res) {
     });
     return res.status(200).json({ url: blob.url });
   } catch (e) {
+    if (/No token found|BLOB_READ_WRITE_TOKEN/i.test(e.message)) {
+      return res.status(500).json({ error: 'Хранилище не подключено. На Vercel: Storage → Blob → Connect, затем Deployments → Redeploy.' });
+    }
     return res.status(500).json({ error: 'Не удалось загрузить фото: ' + e.message });
   }
 }

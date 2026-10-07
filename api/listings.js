@@ -12,6 +12,14 @@ function passwordOk(req) {
   return typeof given === 'string' && given === expected;
 }
 
+// Понятное объяснение вместо английской ошибки библиотеки
+export function storageError(e) {
+  if (/No token found|BLOB_READ_WRITE_TOKEN/i.test(e.message)) {
+    return 'Хранилище не подключено. На Vercel: Storage → Blob → Connect, затем Deployments → Redeploy.';
+  }
+  return 'Не удалось сохранить: ' + e.message;
+}
+
 async function currentUrl() {
   const { blobs } = await list({ prefix: FILE, limit: 1 });
   return blobs.length ? blobs[0].url : null;
@@ -60,7 +68,7 @@ export default async function handler(req, res) {
       });
       return res.status(200).json({ ok: true, count: clean.length });
     } catch (e) {
-      return res.status(500).json({ error: 'Не удалось сохранить: ' + e.message });
+      return res.status(500).json({ error: storageError(e) });
     }
   }
 
